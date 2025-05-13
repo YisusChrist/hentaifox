@@ -1,0 +1,135 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Documentation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='styles.css')}}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <h1>API Docs</h1>
+        <p>✧･ﾟ Welcome to the HentaiFox unofficial API Documentation ･ﾟ✧</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content">
+        <h2>✧ Endpoints ✧</h2>
+        <div class="endpoint">
+          <h3>⋆｡°✩ <code>/hentaifox/&lt;input_data&gt;</code></h3>
+          <p>This endpoint scrapes content from galleries.</p>
+
+          <h4>Parameters:</h4>
+          <ul>
+            <li>
+              <code>input_data</code> (string) - This can be one of the
+              following:
+              <ul>
+                <li><strong>random</strong>: Scrapes a random gallery</li>
+                <li><strong>URL</strong>: Provide a valid gallery URL</li>
+                <li><strong>ID</strong>: Provide a valid numeric ID</li>
+              </ul>
+            </li>
+          </ul>
+
+          <h4>Example Usage:</h4>
+          <ul>
+            <li><code>/hentaifox/random</code> - Scrapes a random gallery</li>
+            <li><code>/hentaifox/123456</code> - Scrapes gallery ID 123456</li>
+            <li>
+              <code>/hentaifox/https://hentaifox.\ncom/gallery/1</code> -
+              Scrapes by URL
+            </li>
+          </ul>
+
+          <h4>Try it out:</h4>
+          <div class="try-it-container">
+            <input
+              type="text"
+              id="input-data"
+              placeholder="Enter random, ID, or URL"
+              aria-label="Enter input data"
+            />
+            <button class="try-it" onclick="tryScrape()">Try it ✨</button>
+          </div>
+          <pre id="result"></pre>
+
+          <h4>Response Format:</h4>
+          <pre>
+{
+  "success": true,
+  "data": {
+    "title": "Gallery Title",
+    "id": 123456,
+    "tags": ["tag1", "tag2"],
+    "type": ".jpg",
+    "total": 20,
+    "image": [
+      "image_url_1",
+      "image_url_2"
+    ]
+  },
+  "source": "https://example.com/gallery/123456/"
+}</pre
+          >
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function tryScrape() {
+        const input = document.getElementById("input-data").value.trim();
+        const resultElement = document.getElementById("result");
+
+        if (!input) {
+          showResult({ error: "Please enter input data (｡•́︿•̀｡)" }, false);
+          return;
+        }
+
+        let endpoint = "";
+        if (input.toLowerCase() === "random") {
+          endpoint = "/hentaifox/random";
+        } else if (input.startsWith("http")) {
+          endpoint = `/hentaifox?url=${encodeURIComponent(input)}`;
+        } else {
+          endpoint = `/hentaifox/${input}`;
+        }
+
+        resultElement.style.display = "block";
+        resultElement.textContent = "Loading... (〜￣▽￣)〜";
+
+        fetch(endpoint)
+          .then((response) => response.json())
+          .then((data) => showResult(data, true))
+          .catch((error) =>
+            showResult({ error: `${error.message} (╥﹏╥)` }, false)
+          );
+      }
+
+      function showResult(data, success) {
+        const resultElement = document.getElementById("result");
+        resultElement.style.display = "block";
+        resultElement.className = success
+          ? "response-success"
+          : "response-error";
+        resultElement.textContent = JSON.stringify(data, null, 2);
+      }
+
+      document
+        .getElementById("input-data")
+        .addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            tryScrape();
+          }
+        });
+    </script>
+  </body>
+</html>
