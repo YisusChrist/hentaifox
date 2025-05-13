@@ -22,7 +22,8 @@ body {
       rgba(26, 26, 46, 0.97),
       rgba(26, 26, 46, 0.97)
     ),
-    url("/api/placeholder/400/400");
+    url("https://imgcdn.stablediffusionweb.com/2024/9/19/ea36129a-658f-4f96-9ef9-9065534afddf.jpg");
+  background-size: 400px 400px;
   background-attachment: fixed;
   color: var(--text-color);
   line-height: 1.6;
@@ -54,7 +55,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("/api/placeholder/100/100") repeat;
+  background: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/eaf631d8-9fb2-456d-8077-a0c5c2cbba53/deynq5k-9beb8c45-6625-4cde-8c7b-db835f681562.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2VhZjYzMWQ4LTlmYjItNDU2ZC04MDc3LWEwYzVjMmNiYmE1M1wvZGV5bnE1ay05YmViOGM0NS02NjI1LTRjZGUtOGM3Yi1kYjgzNWY2ODE1NjIuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.IqwCsaXrES1Y57304sb5WkEFMEVv-UhhreiZjYNfCds") repeat;
   opacity: 0.1;
   animation: slide 20s linear infinite;
 }
