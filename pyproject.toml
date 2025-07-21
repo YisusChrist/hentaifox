@@ -1,7 +1,7 @@
 [project]
 name = "hentaifox"
 version = "0.1.0"
-description = "Default template for PDM package"
+description = "A simple web application to extract Hentaifox doujinshi information as an API."
 authors = [
     { name = "Alejandro González Momblán", email = "agelrenorenardo@gmail.com" },
 ]
@@ -21,5 +21,6 @@ types = [
     "types-requests>=2.32.0.20250328",
     "types-beautifulsoup4>=4.12.0.20250204",
 ]
+
 [tool.pdm]
 distribution = false
