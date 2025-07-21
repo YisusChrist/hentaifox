@@ -1,11 +1,12 @@
 # Hentai Fox API
 
+<img width="824" height="498" alt="hentaifox-api" src="https://github.com/user-attachments/assets/c94beec5-6f5e-41d4-9d22-3ac1bc47b25d" />
+
 This is an unofficial API for accessing content from the Hentai Fox website, a platform dedicated to hentai manga.
 
 ## Overview
 
 The Hentai Fox API allows users to search and fetch manga information including titles, links, covers, and descriptions. The API is designed for developers who want to integrate Hentai Fox's manga content into their applications.
-
 
 #### Response
 
